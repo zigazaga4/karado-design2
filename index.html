@@ -192,6 +192,54 @@ footer{padding:60px 5% 30px;border-top:1px solid rgba(255,255,255,.04)}
 .stats-flex{flex-wrap:wrap;gap:40px}
 .ft-grid{grid-template-columns:1fr 1fr;gap:30px}
 }
+
+/* === PREMIUM UPGRADES D2 === */
+/* Animated grid background */
+.hero-grid-bg { background-image: linear-gradient(rgba(0,212,170,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,170,.04) 1px,transparent 1px) !important; animation: gridDrift 20s linear infinite; }
+@keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:60px 60px} }
+
+/* Button shimmer */
+.btn-g { background: linear-gradient(135deg,#00d4aa,#00b894) !important; position:relative; overflow:hidden; }
+.btn-g::after { content:''; position:absolute; top:-50%; left:-60%; width:200%; height:200%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent); transform:skewX(-20deg); transition:left .6s; }
+.btn-g:hover::after { left:60%; }
+
+/* Service cards — neon border on hover */
+.s-card { transition: all .5s cubic-bezier(.23,1,.32,1) !important; }
+.s-card:hover { box-shadow: 0 0 0 1px rgba(0,212,170,.3), 0 20px 60px rgba(0,0,0,.3) !important; }
+
+/* Features strip items */
+.f-item { transition: all .4s !important; }
+.f-item:hover { background: rgba(0,212,170,.04) !important; }
+.f-item .f-icon { color: #00d4aa; }
+
+/* Glow behind stats numbers */
+.si-num { text-shadow: 0 0 40px rgba(0,212,170,.3); }
+
+/* Testimonial cards */
+.test-card { transition: all .5s cubic-bezier(.23,1,.32,1) !important; }
+.test-card:hover { box-shadow: 0 0 0 1px rgba(0,212,170,.15), 0 25px 60px rgba(0,0,0,.3) !important; }
+
+/* Glowing CTA radial */
+.cta-glow { background: radial-gradient(ellipse 600px 400px at center, rgba(0,212,170,.1) 0%, transparent 70%) !important; }
+
+/* Contact icons */
+.ci-icon { color: #00d4aa; }
+
+/* Nav blur upgrade */
+nav.scrolled { background: rgba(5,5,5,.97) !important; border-bottom: 1px solid rgba(0,212,170,.08) !important; }
+
+/* Marquee text visibility */
+.marquee span { color: rgba(255,255,255,.15) !important; }
+
+/* About checks */
+.ac-check { color: #00d4aa; font-weight:700; }
+
+/* Footer links hover */
+.ft-col a:hover { color: #00d4aa !important; }
+
+/* Scroll arrows */
+.s-link { color: #00d4aa; }
+
 </style>
 </head>
 <body>
@@ -377,6 +425,10 @@ document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
 document.querySelectorAll('.s-card,.f-item,.test-card,.stat-item,.faq-item,.ci-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='all .6s ease';obs.observe(el)});
 lucide.createIcons();
+
+document.querySelectorAll('.s-card').forEach((el,i)=>{ el.style.transitionDelay=(i*0.07)+'s'; });
+document.querySelectorAll('.test-card').forEach((el,i)=>{ el.style.transitionDelay=(i*0.1)+'s'; });
+
 </script>
 </body>
 </html>
